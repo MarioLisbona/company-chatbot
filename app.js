@@ -15,6 +15,9 @@ const openai = new OpenAIApi(configuration);
 const app = express();
 app.use(express.json());
 
+// Serve static files (frontend)
+app.use(express.static("public"));
+
 // Multer setup for file uploads
 const upload = multer({ dest: "uploads/" });
 
@@ -31,7 +34,13 @@ const embedText = async (text) => {
 const documents = [];
 
 app.get("/", (req, res) => {
-  res.send("Hi from the company chat bot");
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+// Endpoint to get the list of uploaded files
+app.get("/files", (req, res) => {
+  const fileList = documents.map((doc) => doc.filename);
+  res.json({ files: fileList });
 });
 
 // Endpoint to upload a file (company policies in text form)
@@ -47,7 +56,9 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       embedding,
     });
 
-    res.json({ message: "File uploaded and embedded successfully" });
+    res.json({
+      message: `File: ${req.file.originalname} uploaded and embedded successfully`,
+    });
   } catch (error) {
     res.status(500).json({ error: "Failed to upload or process file" });
   }
