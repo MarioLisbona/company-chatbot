@@ -1,0 +1,14 @@
+Data Privacy Policy
+
+1. Data Collection:
+The company collects personal information from employees for operational purposes, including payroll processing, benefits management, and performance evaluations.
+
+2. Data Storage:
+All personal data is stored securely on company servers with restricted access. The data is encrypted both in transit and at rest.
+
+3. Data Sharing:
+The company does not share personal employee data with third parties unless required by law or authorized by the employee.
+
+4. Employee Rights:
+Employees have the right to access, correct, or delete their personal data by contacting the HR department. Requests will be processed within 30 days.
+
